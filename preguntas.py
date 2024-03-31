@@ -50,7 +50,7 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    return tbl0["_c1"].value_counts()
+    return tbl0["_c1"].value_counts().sort_index()
 
 
 def pregunta_04():
@@ -94,7 +94,7 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    return sorted(tbl1["_c4"].unique())
+    return [x.upper() for x in sorted(tbl1["_c4"].unique())]
 
 
 def pregunta_07():
@@ -149,7 +149,7 @@ def pregunta_09():
 
     """
     df = tbl0.copy()
-    df["year"] = pd.to_datetime(df["_c3"]).dt.year
+    df["year"] = df["_c3"].apply(lambda x: x.split("-")[0])
     return df
 
 
